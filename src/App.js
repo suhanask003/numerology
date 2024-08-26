@@ -1,9 +1,11 @@
+import TextForm from "./components/TextForm";
 
 
 function App() {
   return (
-    <div className="App">
-      Hello
+    <div className="container">
+      <h2>Name Numerology Counter</h2>
+      <TextForm/>
     </div>
   );
 }
