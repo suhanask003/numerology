@@ -30,6 +30,7 @@ const TextForm = () => {
         'F': 8
     };
     let [sum, setSum] = useState(0);
+    let [finSum, setFinalSum] = useState(0);
 
     let [name, setName] = useState("");
     const handleOnChange = (event) => {
@@ -38,10 +39,16 @@ const TextForm = () => {
 
     const handleSum = () => {
         let count = 0;
-        for (let i = 0; i < name.length; i++) {
-            count += valmap[name[i].toUpperCase()];
+        for (let i of name) {
+            count += valmap[i.toUpperCase()];
         }
         setSum(count);
+        let numstr = count.toString();
+        let finalSum = 0;
+        for (let i of numstr) {
+            finalSum += parseInt(i);
+        }
+        setFinalSum(finalSum);
     }
 
     return (
@@ -49,6 +56,7 @@ const TextForm = () => {
             <input type="text" className="form-control mt-3" value={name} onChange={handleOnChange} id="nameControlInput1" placeholder="Enter name here" />
             <button className='btn btn-primary my-3' onClick={handleSum}>Calculate</button>
             <h2>Number: {sum}</h2>
+            <h2>Magic Number: {finSum}</h2>
         </div>
     )
 }
